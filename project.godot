@@ -17,7 +17,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Event="*res://scenes/Event.cs"
+Event="*res://scripts/Event.cs"
+Game="*res://scenes/game/Game.tscn"
 
 [display]
 
