@@ -25,13 +25,12 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 6.5, 7 )
 
-[node name="Goomba" type="KinematicBody2D"]
+[node name="Goomba" type="KinematicBody2D" groups=["Enemy"]]
 collision_layer = 4
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
 animation = "walk"
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

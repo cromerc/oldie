@@ -26,8 +26,6 @@ extents = Vector2( 6, 13 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
 animation = "chomp"
-frame = 1
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

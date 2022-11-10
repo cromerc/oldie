@@ -43,7 +43,6 @@ extents = Vector2( 5.5, 6 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
 animation = "walk"
-playing = true
 
 [node name="NormalCollision" type="CollisionShape2D" parent="."]
 visible = false
