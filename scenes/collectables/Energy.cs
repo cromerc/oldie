@@ -3,11 +3,11 @@ using System;
 
 public class Energy : Area2D
 {
-	Event eventBus;
+	private Event _eventBus;
 
 	public override void _Ready()
 	{
-		eventBus = GetNode<Event>("/root/Event");
+		_eventBus = GetNode<Event>("/root/Event");
 		GetNode<AnimatedSprite>("AnimatedSprite").Play();
 	}
 
@@ -18,7 +18,7 @@ public class Energy : Area2D
 		SetCollisionLayerBit((int) Game.PhysicsLayer.Collectable, false);
 		if (String.Equals(body.Name, "Player"))
 		{
-			eventBus.EmitSignal("EnergyCollected", 1);
+			_eventBus.EmitSignal("EnergyCollected", 1);
 		}
 		QueueFree();
 	}
