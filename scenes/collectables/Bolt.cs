@@ -3,6 +3,8 @@ using System;
 
 public class Bolt : Area2D
 {
+	[Export]
+	private int _value = 1;
     private Event _eventBus;
 
     public override void _Ready()
@@ -18,8 +20,13 @@ public class Bolt : Area2D
 		SetCollisionLayerBit((int) Game.PhysicsLayer.Collectable, false);
 		if (String.Equals(body.Name, "Player"))
 		{
-			_eventBus.EmitSignal("BoltCollected", 1);
+			Collected();
 		}
+	}
+
+	public void Collected()
+	{
+		_eventBus.EmitSignal("BoltCollected", _value);
 		QueueFree();
 	}
 }
