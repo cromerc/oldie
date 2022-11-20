@@ -4,11 +4,12 @@ using System;
 public class Energy : Area2D
 {
 	private Event _eventBus;
+	private AnimatedSprite _sprite;
 
 	public override void _Ready()
 	{
 		_eventBus = GetNode<Event>("/root/Event");
-		GetNode<AnimatedSprite>("AnimatedSprite").Play();
+		_sprite = GetNode<AnimatedSprite>("AnimatedSprite");
 	}
 
 	public void OnEnergyBodyEntered(Node body)
@@ -21,5 +22,15 @@ public class Energy : Area2D
 			_eventBus.EmitSignal("EnergyCollected", 1);
 		}
 		QueueFree();
+	}
+
+	public void OnVisibilityNotifier2DScreenEntered()
+	{
+		_sprite.Play();
+	}
+
+	public void OnVisibilityNotifier2DScreenExited()
+	{
+		_sprite.Stop();
 	}
 }
