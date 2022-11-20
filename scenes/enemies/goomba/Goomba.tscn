@@ -25,7 +25,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 6.5, 7 )
 
-[node name="Goomba" type="KinematicBody2D" groups=["Enemy"]]
+[node name="Goomba" type="KinematicBody2D" groups=["Enemy", "Stompable"]]
 collision_layer = 4
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
