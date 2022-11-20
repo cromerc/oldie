@@ -12,4 +12,6 @@ public sealed class Event : Node
 	delegate void FireCollected();
 	[Signal]
 	delegate void PlayerTouched();
+	[Signal]
+	delegate void DebugState(string state);
 }
