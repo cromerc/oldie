@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/block/block.png" type="Texture" id=1]
+[ext_resource path="res://scenes/collectables/Bolt.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/block/Block.cs" type="Script" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -26,7 +28,40 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8, 8 )
 
-[node name="MysteryBlock" type="StaticBody2D"]
+[sub_resource type="Animation" id=5]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -4 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "bounce"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
+}
+
+[node name="MysteryBlock" type="StaticBody2D" groups=["Block"]]
+script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
@@ -37,3 +72,19 @@ centered = false
 visible = false
 position = Vector2( 8, 8 )
 shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/hit = SubResource( 5 )
+
+[node name="Bolt" parent="." instance=ExtResource( 2 )]
+z_index = -1
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bolt"]
+anims/bounce = SubResource( 6 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="OnAnimationPlayerAnimationFinished"]
+[connection signal="animation_finished" from="Bolt/AnimationPlayer" to="." method="OnAnimationPlayerAnimationFinished"]
