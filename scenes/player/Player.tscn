@@ -131,8 +131,9 @@ animations = [ {
 extents = Vector2( 6, 6.5 )
 
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 0
+collision_mask = 2
 script = ExtResource( 10 )
+_canDoubleJump = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
@@ -145,3 +146,8 @@ shape = SubResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="CayoteTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="timeout" from="CayoteTimer" to="." method="OnCayoteTimerTimeout"]
