@@ -3,9 +3,11 @@ using Godot;
 public sealed class Game : Node
 {
     [Export]
-    private int _energy { get; set; } = 3;
+    private int _energy = 3;
     [Export]
-    private int _bolts { get; set; } = 0;
+    private int _bolts = 0;
+    public int Energy { get { return _energy; } set { _energy = value; } }
+    public int Bolts { get { return _bolts; } set { _bolts = value; } }
 
     public enum PhysicsLayer : ushort
     {
@@ -26,18 +28,10 @@ public sealed class Game : Node
     public void OnEnergyCollected(int energy)
     {
         _energy += energy;
-        if (OS.IsDebugBuild())
-        {
-            GD.Print("Energy: " + _energy);
-        }
     }
 
     public void OnBoltCollected(int bolts)
     {
         _bolts += bolts;
-        if (OS.IsDebugBuild())
-        {
-            GD.Print("Bolts: " + _bolts);
-        }
     }
 }
