@@ -87,6 +87,14 @@ public class Player : KinematicBody2D
             {
                 _eventBus.EmitSignal("PlayerTouched");
             }
+            else if (collider.IsInGroup("Block") && Vector2.Down.Dot(collision.Normal) > 0)
+            {
+                if (collider.HasMethod("Hit"))
+                {
+                    collider.RemoveFromGroup("Block");
+                    collider.CallDeferred("Hit");
+                }
+            }
             collision.Dispose();
         }
     }
