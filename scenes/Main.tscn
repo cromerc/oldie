@@ -1,66 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/enemies/goomba/Goomba.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/enemies/turtle/red/RedTurtle.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/enemies/turtle/blue/BlueTurtle.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/enemies/turtle/grey/GreyTurtle.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/enemies/plant/Plant.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/collectables/Bolt.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/collectables/Energy.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/block/MysteryBlock.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/block/MysteryBlockCave.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/checkpoint/Checkpoint.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/powerup/fire/FirePowerup.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/powerup/fire/InvinicibilityPowerup.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/enemies/spike_shell/SpikeShell.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/gear/Gear.tscn" type="PackedScene" id=15]
+[ext_resource path="res://GameObjects.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/level1.tmx" type="PackedScene" id=17]
 
 [node name="Main" type="Node"]
 
-[node name="GameObjects" type="Node" parent="."]
+[node name="level1" parent="." instance=ExtResource( 17 )]
+position = Vector2( 176, 32 )
 
-[node name="Player" parent="GameObjects" instance=ExtResource( 1 )]
-position = Vector2( 256, 140 )
-
-[node name="Goomba" parent="GameObjects" instance=ExtResource( 2 )]
-position = Vector2( 307, 141 )
-
-[node name="BlueTurtle" parent="GameObjects" instance=ExtResource( 4 )]
-position = Vector2( 312, 179 )
-
-[node name="RedTurtle" parent="GameObjects" instance=ExtResource( 3 )]
-position = Vector2( 308, 106 )
-
-[node name="GreyTurtle" parent="GameObjects" instance=ExtResource( 5 )]
-position = Vector2( 364, 110 )
-
-[node name="Plant" parent="GameObjects" instance=ExtResource( 6 )]
-position = Vector2( 256, 165 )
-
-[node name="Bolt" parent="GameObjects" instance=ExtResource( 7 )]
-position = Vector2( 256, 108 )
-
-[node name="Energy" parent="GameObjects" instance=ExtResource( 8 )]
-position = Vector2( 255, 82 )
-
-[node name="MysteryBlock" parent="GameObjects" instance=ExtResource( 9 )]
-position = Vector2( 258, 205 )
-
-[node name="MysteryBlockCave" parent="GameObjects" instance=ExtResource( 10 )]
-position = Vector2( 260, 252 )
-
-[node name="Checkpoint" parent="GameObjects" instance=ExtResource( 11 )]
-position = Vector2( 307, 225 )
-
-[node name="FirePowerup" parent="GameObjects" instance=ExtResource( 12 )]
-position = Vector2( 227, 141 )
-
-[node name="InvinicibilityPowerup" parent="GameObjects" instance=ExtResource( 13 )]
-position = Vector2( 204, 141 )
-
-[node name="SpikeShell" parent="GameObjects" instance=ExtResource( 14 )]
-position = Vector2( 361, 136 )
-
-[node name="Gear" parent="GameObjects" instance=ExtResource( 15 )]
-position = Vector2( 211, 101 )
+[node name="GameObjects" parent="." instance=ExtResource( 1 )]
