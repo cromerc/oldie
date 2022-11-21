@@ -18,7 +18,7 @@ public class Bolt : Area2D
 		Disconnect("body_entered", this, "OnBoltBodyEntered");
 		SetCollisionMaskBit((int) Game.PhysicsLayer.Player, false);
 		SetCollisionLayerBit((int) Game.PhysicsLayer.Collectable, false);
-		if (String.Equals(body.Name, "Player"))
+		if (body.Name.Equals("Player"))
 		{
 			Collected();
 		}
