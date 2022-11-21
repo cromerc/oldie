@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/goomba/walking.png" type="Texture" id=1]
+[ext_resource path="res://scenes/enemies/goomba/Goomba.cs" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -23,10 +24,11 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 6.5, 7 )
+extents = Vector2( 6.67969, 7 )
 
 [node name="Goomba" type="KinematicBody2D" groups=["Enemy", "Stompable"]]
 collision_layer = 4
+script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
@@ -34,5 +36,14 @@ animation = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2( 0.5, 2 )
+position = Vector2( 0.320312, 2 )
 shape = SubResource( 5 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+visible = false
+position = Vector2( 1, 0 )
+rect = Rect2( -9, -9, 18, 18 )
+process_parent = true
+physics_process_parent = true
+
+[connection signal="screen_exited" from="VisibilityEnabler2D" to="." method="OnVisibilityNotifier2DScreenExited"]
