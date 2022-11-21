@@ -59,6 +59,7 @@ shape = SubResource( 7 )
 disabled = true
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+visible = false
 process_parent = true
 physics_process_parent = true
 
