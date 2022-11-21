@@ -28,6 +28,7 @@ extents = Vector2( 6.67969, 7 )
 
 [node name="Goomba" type="KinematicBody2D" groups=["Enemy", "Stompable"]]
 collision_layer = 4
+collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
