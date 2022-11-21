@@ -14,4 +14,6 @@ public sealed class Event : Node
 	delegate void PlayerTouched();
 	[Signal]
 	delegate void DebugState(string state);
+	[Signal]
+	delegate void CameraView(Rect2 rect);
 }
