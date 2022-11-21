@@ -5,15 +5,17 @@ using System.Collections.Generic;
 public class Player : KinematicBody2D
 {
     [Export]
-    private bool _isInvincible { get; set; } = false;
+    private bool _isInvincible = false;
     [Export]
-    private bool _canDoubleJump { get; set; } = true;
+    private bool _canDoubleJump = true;
     [Export]
-    private bool _cayoteTime { get; set; } = true;
+    private bool _cayoteTime = true;
     [Export]
-    private int _maxWalkSpeed { get; set; } = 50;
+    private int _maxWalkSpeed = 50;
     [Export]
-    private int _maxRunSpeed { get; set; } = 150;
+    private int _maxRunSpeed = 150;
+    [Export]
+    private int _gravity = (int) ProjectSettings.GetSetting("physics/2d/default_gravity");
     private Event _eventBus;
     private Vector2 _velocity;
     private AnimatedSprite _sprite;
@@ -101,7 +103,7 @@ public class Player : KinematicBody2D
 
     private void ApplyGravity(float delta)
     {
-        _velocity.y += (int) ProjectSettings.GetSetting("physics/2d/default_gravity") * delta * 5;
+        _velocity.y += (int) _gravity * delta * 5;
     }
 
     private void EnterState(State state)
