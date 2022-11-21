@@ -40,3 +40,6 @@ assets/**/*.png
 assets/**/*.wav
 assets/**/*.mp3
 icon.png
+
+### Tiled session
+*.tiled-session
