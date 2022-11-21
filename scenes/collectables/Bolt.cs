@@ -5,11 +5,11 @@ public class Bolt : Area2D
 {
 	[Export]
 	private int _value = 1;
-    private Event _eventBus;
+    private Event _event;
 
     public override void _Ready()
     {
-        _eventBus = GetNode<Event>("/root/Event");
+        _event = GetNode<Event>("/root/Event");
 		GetNode<AnimatedSprite>("AnimatedSprite").Play();
     }
 
@@ -26,7 +26,7 @@ public class Bolt : Area2D
 
 	public void Collected()
 	{
-		_eventBus.EmitSignal("BoltCollected", _value);
+		_event.EmitSignal("BoltCollected", _value);
 		QueueFree();
 	}
 }
